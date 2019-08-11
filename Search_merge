@@ -1,0 +1,25 @@
+import pandas as pd
+from mod import Mod
+#+df.mês[n]+df.shop[n]+df.luc[n]
+import numpy as np
+df = pd.read_csv(r'C:\Users\paulo\Downloads\simulalgo.csv', encoding='UTF-8', sep=";")
+
+len_inad = len(df['inad'])
+delay = 4
+chaveinad =[]
+inaddelay =[]
+
+for n in range(len_inad):
+    a = df.inad[n]
+    if a==1:
+        ano = int(((df.ano[n] * 12 - df.mês[n] - delay) /12) -0.1)
+        mes =  int(Mod(df.ano[n] * 12 + df.mês[n] - delay,12))
+        chave2 = str(ano) + str(mes) +str(df.shop[n])+str(df.luc[n])
+        chaveinad.append(chave2)
+        inaddelay.append(1)
+        print(chave2)
+        
+
+dfinadelay = pd.DataFrame()
+dfinadelay['Chave'] = chaveinad
+dfinadelay['inad3mes'] = inaddelay
