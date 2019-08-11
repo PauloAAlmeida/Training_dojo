@@ -1,1 +1,1 @@
-# Python
+#Every day python
