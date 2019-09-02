@@ -1,0 +1,24 @@
+#Monta Chave e busca em uma lista string com mais de 3 registros em ina (inad_tot>3)
+
+df_chaveC= pd.DataFrame({'ina':df['inadMes'],'Gro':df['PercentualTotal'],'chaveC':chave_contr, 'anomes': df['NrMes_x'],'contr':df['NrConto_x'],'vendascontrato':df['VlrV'], 'VlrCustoT':df['VlrCTotal']})
+
+
+
+chaveinadtot=[]
+CChaveC =[]
+
+df_chave_dupl = pd.DataFrame(df_chaveC['chaveC'])
+
+df_chave_dupl = df_chave_dupl.drop_duplicates(subset ="chaveC", keep = 'first')
+
+#['cchavec'] = df.drop_duplicates(subset ="chave_contr", keep = False, inplace = True)  
+
+for i in range(len(df_chave_dupl)):
+    
+    b = df_chave_dupl.chaveC[i]
+    a = df_chaveC[df_chaveC['chaveC'] == b]
+    
+    inad_tot = a.inad.sum()
+    print(b)
+    if inad_tot > 3:
+        chaveinatot.append(b)
